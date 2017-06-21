@@ -1,0 +1,28 @@
+{
+  "name": "angular-text-image",
+  "description": "Converts any text into an image retaining font formatting",
+  "main": "src/angular-text-image.js",
+  "authors": [
+    "Jason Panugaling"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "text-to-image",
+    "text-image",
+    "convert-text-to-image"
+  ],
+  "homepage": "https://github.com/dashawk/angular-text-to-image",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+	  "./demo/*.*",
+	  "README.md",
+	  ".travis.yml",
+	  ".gitignore",
+	  "gulpfile.js",
+	  "index.js"
+  ]
+}
