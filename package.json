@@ -1,14 +1,23 @@
 {
   "name": "angular-text-image",
   "version": "1.0.0",
-  "description": "",
+  "description": "Converts any text into an image retaining font formatting",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "directories": {
+    "src": "src"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "init": "npm install",
+    "install": "bower install",
+    "demo": "node demo"
+  },
+  "keywords": [
+    "text-to-image",
+    "text-image",
+    "convert-text-to-image"
+  ],
+  "author": "Jason Panugaling",
+  "license": "MIT",
   "devDependencies": {
     "angular": "^1.6.4",
     "gulp": "^3.9.1",
@@ -20,5 +29,14 @@
     "jquery": "^3.2.1",
     "pump": "^1.0.2",
     "serve": "^5.2.3"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dashawk/angular-text-to-image.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dashawk/angular-text-to-image/issues"
+  },
+  "homepage": "https://github.com/dashawk/angular-text-to-image#readme"
 }
