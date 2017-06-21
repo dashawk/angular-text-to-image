@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Demo</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Mr+De+Haviland');
+			.test {
+				font-family: 'Mr De Haviland', cursive;
+			}
+		</style>
+	</head>
+	<body ng-controller="testController as vm">
+
+		<h1>Demo</h1>
+		<div class="test">
+			<text-to-image></text-to-image>
+		</div>
+
+		<script src="../node_modules/jquery/dist/jquery.js"></script>
+		<script src="../node_modules/angular/angular.js"></script>
+		<script src="angular-text-image.min.js"></script>
+		<script>
+			(function () {
+				'use strict';
+
+				angular
+					.module('myApp', ['textToImage'])
+					.controller('testController', function ($scope) {
+
+					});
+			}());
+		</script>
+	</body>
+</html>
