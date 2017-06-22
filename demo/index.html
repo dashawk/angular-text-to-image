@@ -16,13 +16,13 @@
 
 		<h1>Demo</h1>
 		<div class="test">
-			<text-to-image options="vm.options"></text-to-image>
+			<text-to-image options="vm.options" output="vm.getData"></text-to-image>
 			<button ng-click="vm.output()">Get Output</button>
 		</div>
 
 		<script src="../node_modules/jquery/dist/jquery.js"></script>
 		<script src="../node_modules/angular/angular.js"></script>
-		<script src="angular-text-image.min.js"></script>
+		<script src="angular-text-image.js"></script>
 		<script>
 			(function () {
 				'use strict';
@@ -31,7 +31,7 @@
 					.module('myApp', ['jmp.textToImage'])
 					.controller('testController', function ($scope) {
 						var vm = this;
-
+//						vm.getData = 'test data';
 						vm.options = {
 							text: 'The Quick Brown Fox',
 							fontSize: 37,
@@ -43,7 +43,7 @@
 						};
 
 						vm.output = function () {
-							var data = vm.options.getData();
+//							var data = vm.options.getData();
 							console.log(vm.options);
 						}
 

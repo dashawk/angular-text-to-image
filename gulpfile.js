@@ -4,7 +4,7 @@ var $ = require('gulp-load-plugins')({ lazy: true });
 
 gulp.task('demo', ['default'], function (cb) {
 	pump([
-		gulp.src('./dist/angular-text-image.min.js'),
+		gulp.src('./dist/angular-text-image.js'),
 		gulp.dest('./demo')
 	],cb)
 });

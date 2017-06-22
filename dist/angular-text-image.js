@@ -13,7 +13,8 @@
 			replace: true,
 			template: '<div class="text-to-image-directive"><canvas class="text-to-image"></canvas></div>',
 			scope: {
-				options: '=?'
+				options: '=?',
+				output: '=?'
 			},
 			link: function (scope, element, attrs) {
 				var options = {
@@ -32,14 +33,11 @@
 				var imgEmpty = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjgAAADcCAQAAADXNhPAAAACIklEQVR42u3UIQEAAAzDsM+/6UsYG0okFDQHMBIJAMMBDAfAcADDATAcwHAAwwEwHMBwAAwHMBzAcAAMBzAcAMMBDAcwHADDAQwHwHAAwwEMB8BwAMMBMBzAcADDATAcwHAADAcwHADDAQwHMBwAwwEMB8BwAMMBDAfAcADDATAcwHAAwwEwHMBwAAwHMBzAcAAMBzAcAMMBDAcwHADDAQwHwHAAwwEwHMBwAMMBMBzAcAAMBzAcwHAADAcwHADDAQwHMBwAwwEMB8BwAMMBDAfAcADDATAcwHAAwwEwHMBwAAwHMBzAcCQADAcwHADDAQwHwHAAwwEMB8BwAMMBMBzAcADDATAcwHAADAcwHMBwAAwHMBwAwwEMBzAcAMMBDAfAcADDAQwHwHAAwwEwHMBwAAwHMBzAcAAMBzAcAMMBDAcwHADDAQwHwHAAwwEMB8BwAMMBMBzAcADDATAcwHAADAcwHMBwAAwHMBwAwwEMB8BwAMMBDAfAcADDATAcwHAAwwEwHMBwAAwHMBzAcAAMBzAcAMMBDAcwHADDAQwHwHAAwwEMB8BwAMMBMBzAcADDkQAwHMBwAAwHMBwAwwEMBzAcAMMBDAfAcADDAQwHwHAAwwEwHMBwAMMBMBzAcAAMBzAcwHAADAcwHADDAQwHMBwAwwEMB8BwAMMBMBzAcADDATAcwHAADAcwHMBwAAwHMBwAwwEMBzAcAMMBDAegeayZAN3dLgwnAAAAAElFTkSuQmCC';
 				
 				scope.updateDataUrl = updateDataUrl;
-				scope.getData = getData;
+				scope.output = output;
 				scope.init = init;
 				
-				options.getData = scope.getData;
+				options.output = scope.output;
 				scope.options = angular.extend(options, scope.options);
-				//scope.options.getData = scope.getData;
-				canvas[0].width = parseInt(scope.options.width, 10);
-				canvas[0].height = parseInt(scope.options.height, 10);
 				
 				scope.$watch('options', function (data) {
 					if (data) {
@@ -61,13 +59,16 @@
 					});
 				}
 				
-				function getData() {
+				function output() {
 					return {
 						isEmpty: scope.options.text === '' || !scope.options.text,
 						data: scope.dataUrl
 					}
 				}
 				function init() {
+					canvas[0].width = parseInt(scope.options.width, 10);
+					canvas[0].height = parseInt(scope.options.height, 10);
+					
 					context.font = scope.options.fontSize + 'px ' + scope.options.fontFamily;
 					context.textAlign = scope.options.textAlign;
 					canvas.textBaseline = 'middle';
