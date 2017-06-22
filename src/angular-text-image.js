@@ -40,16 +40,13 @@
 				canvas[0].width = parseInt(scope.options.width, 10);
 				canvas[0].height = parseInt(scope.options.height, 10);
 				
-				init();
-				
-				//scope.$watch('options', function (data) {
-				//	destroy();
-				//	if (data) {
-				//		$timeout(function () {
-				//			init();
-				//		});
-				//	}
-				//});
+				scope.$watch('options', function (data) {
+					if (data) {
+						$timeout(function () {
+							init();
+						});
+					}
+				});
 				
 				scope.$on('$destroy', destroy);
 				

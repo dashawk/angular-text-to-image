@@ -8,13 +8,7 @@ gulp.task('demo', ['default'], function (cb) {
 		gulp.dest('./demo')
 	],cb)
 });
-gulp.task('copy', function (cb) {
-	pump([
-		gulp.src('./src/angular-text-image.js'),
-		gulp.dest('./dist')
-	], cb);
-});
-gulp.task('default', ['copy'], function (cb) {
+gulp.task('default', function (cb) {
 	pump([
 		gulp.src('./src/angular-text-image.js'),
 		//$.uglify(),
