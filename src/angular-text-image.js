@@ -2,7 +2,7 @@
 	'use strict';
 	
 	angular
-		.module('textToImage', [])
+		.module('jmp.textToImage', [])
 		.directive('textToImage', function ($compile, $timeout) {
 			return {
 				restrict: 'E',
