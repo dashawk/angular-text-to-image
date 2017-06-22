@@ -2,6 +2,8 @@
 
 Angular directive to convert any text into an image.
 
+*Need Contributors.*
+
 ## Installation
 
 ## Usage

@@ -16,7 +16,8 @@
 
 		<h1>Demo</h1>
 		<div class="test">
-			<text-to-image></text-to-image>
+			<text-to-image options="vm.options"></text-to-image>
+			<button ng-click="vm.output()">Get</button>
 		</div>
 
 		<script src="../node_modules/jquery/dist/jquery.js"></script>
@@ -29,6 +30,22 @@
 				angular
 					.module('myApp', ['textToImage'])
 					.controller('testController', function ($scope) {
+						var vm = this;
+
+						vm.options = {
+							text: 'The Quick Brown Fox',
+							fontSize: 37,
+							width: 200,
+							height: 100,
+							textLeft: 0,
+							textTop: 0,
+							fontFamily: 'Mr De Haviland, cursive'
+						};
+
+						vm.output = function () {
+							var data = vm.options.getData();
+							console.log(data);
+						}
 
 					});
 			}());
