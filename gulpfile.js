@@ -2,6 +2,12 @@ var gulp = require('gulp');
 var pump = require('pump');
 var $ = require('gulp-load-plugins')({ lazy: true });
 
+gulp.task('demo', ['default'], function (cb) {
+	pump([
+		gulp.src('./dist/angular-text-image.min.js'),
+		gulp.dest('./demo')
+	],cb)
+});
 gulp.task('copy', function (cb) {
 	pump([
 		gulp.src('./src/angular-text-image.js'),
@@ -11,7 +17,7 @@ gulp.task('copy', function (cb) {
 gulp.task('default', ['copy'], function (cb) {
 	pump([
 		gulp.src('./src/angular-text-image.js'),
-		$.uglify(),
+		//$.uglify(),
 		$.ngAnnotate({ add: true }),
 		$.rename({ suffix: '.min' }),
 		gulp.dest('./dist')
