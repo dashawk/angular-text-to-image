@@ -13,7 +13,7 @@ gulp.task('default', function (cb) {
 		gulp.src('./src/angular-text-image.js'),
 		//$.uglify(),
 		$.ngAnnotate({ add: true }),
-		$.rename({ suffix: '.min' }),
+		//$.rename({ suffix: '.min' }),
 		gulp.dest('./dist')
 	], cb);
 });

@@ -1,6 +1,7 @@
 (function () {
 	'use strict';
 	
+	TextToImageDirective.$inject = ["$timeout"];
 	angular
 		.module('jmp.textToImage', [])
 		.directive('textToImage', TextToImageDirective);
@@ -41,7 +42,6 @@
 				canvas[0].height = parseInt(scope.options.height, 10);
 				
 				scope.$watch('options', function (data) {
-					destroy();
 					if (data) {
 						$timeout(function () {
 							init();
