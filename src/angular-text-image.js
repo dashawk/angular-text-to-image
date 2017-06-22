@@ -70,8 +70,10 @@
 					//scope.options.dataUrl = canvas[0].toDataURL('image/png');
 					scope.updateDataUrl(canvas[0].toDataURL('image/png'));
 					
-					element.append(canvas);
 					$compile(canvas)(scope);
+					element.append(canvas);
+					
+					scope.$apply();
 				}
 			}
 		};
