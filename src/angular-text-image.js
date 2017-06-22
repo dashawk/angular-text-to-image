@@ -6,10 +6,11 @@
 		.directive('textToImage', TextToImageDirective);
 	
 	/* @ngInject */
-	function TextToImageDirective($compile, $timeout) {
+	function TextToImageDirective($timeout) {
 		return {
 			restrict: 'E',
 			replace: true,
+			template: '<div class="text-to-image-directive"><canvas class="text-to-image"></canvas></div>',
 			scope: {
 				options: '=?'
 			},
@@ -24,7 +25,8 @@
 					height: 100,
 					fontFamily: 'sans-serif'
 				};
-				var canvas = angular.element('<canvas />');
+				//var canvas = angular.element('<canvas />');
+				var canvas = element.find('canvas');
 				var context = canvas[0].getContext('2d');
 				var imgEmpty = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjgAAADcCAQAAADXNhPAAAACIklEQVR42u3UIQEAAAzDsM+/6UsYG0okFDQHMBIJAMMBDAfAcADDATAcwHAAwwEwHMBwAAwHMBzAcAAMBzAcAMMBDAcwHADDAQwHwHAAwwEMB8BwAMMBMBzAcADDATAcwHAADAcwHADDAQwHMBwAwwEMB8BwAMMBDAfAcADDATAcwHAAwwEwHMBwAAwHMBzAcAAMBzAcAMMBDAcwHADDAQwHwHAAwwEwHMBwAMMBMBzAcAAMBzAcwHAADAcwHADDAQwHMBwAwwEMB8BwAMMBDAfAcADDATAcwHAAwwEwHMBwAAwHMBzAcCQADAcwHADDAQwHwHAAwwEMB8BwAMMBMBzAcADDATAcwHAADAcwHMBwAAwHMBwAwwEMBzAcAMMBDAfAcADDAQwHwHAAwwEwHMBwAAwHMBzAcAAMBzAcAMMBDAcwHADDAQwHwHAAwwEMB8BwAMMBMBzAcADDATAcwHAADAcwHMBwAAwHMBwAwwEMB8BwAMMBDAfAcADDATAcwHAAwwEwHMBwAAwHMBzAcAAMBzAcAMMBDAcwHADDAQwHwHAAwwEMB8BwAMMBMBzAcADDkQAwHMBwAAwHMBwAwwEMBzAcAMMBDAfAcADDAQwHwHAAwwEwHMBwAMMBMBzAcAAMBzAcwHAADAcwHADDAQwHMBwAwwEMB8BwAMMBMBzAcADDATAcwHAADAcwHMBwAAwHMBwAwwEMBzAcAMMBDAegeayZAN3dLgwnAAAAAElFTkSuQmCC';
 				
@@ -32,29 +34,39 @@
 				scope.getData = getData;
 				scope.init = init;
 				
+				options.getData = scope.getData;
 				scope.options = angular.extend(options, scope.options);
-				scope.options.getData = scope.getData;
+				//scope.options.getData = scope.getData;
 				canvas[0].width = parseInt(scope.options.width, 10);
 				canvas[0].height = parseInt(scope.options.height, 10);
 				
-				scope.$watch('options', function (data) {
-					if (data) {
-						$timeout(function () {
-							init();
-						});
-					}
-				});
+				init();
 				
+				//scope.$watch('options', function (data) {
+				//	destroy();
+				//	if (data) {
+				//		$timeout(function () {
+				//			init();
+				//		});
+				//	}
+				//});
+				
+				scope.$on('$destroy', destroy);
+				
+				function destroy() {
+					element.find('canvas').remove();
+					canvas = null;
+				}
 				function updateDataUrl(dataUrl) {
 					$timeout().then(function () {
-						scope.options.dataUrl = !scope.options.text ? imgEmpty : dataUrl;
+						scope.dataUrl = !scope.options.text ? imgEmpty : dataUrl;
 					});
 				}
 				
 				function getData() {
 					return {
 						isEmpty: scope.options.text === '' || !scope.options.text,
-						data: scope.options.dataUrl
+						data: scope.dataUrl
 					}
 				}
 				function init() {
@@ -70,10 +82,8 @@
 					//scope.options.dataUrl = canvas[0].toDataURL('image/png');
 					scope.updateDataUrl(canvas[0].toDataURL('image/png'));
 					
-					$compile(canvas)(scope);
-					element.append(canvas);
-					
-					scope.$apply();
+					//$compile(canvas)(scope);
+					//element.append(canvas);
 				}
 			}
 		};
