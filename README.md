@@ -1,4 +1,5 @@
 # Introduction
+[![Build Status](https://travis-ci.org/dashawk/angular-text-to-image.svg?branch=master)](https://travis-ci.org/dashawk/angular-text-to-image)
 
 Angular directive to convert any text into an image.
 
