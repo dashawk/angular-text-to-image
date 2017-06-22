@@ -1,5 +1,5 @@
 {
-  "name": "angular-text-image",
+  "name": "angular-text-to-image",
   "description": "Converts any text into an image retaining font formatting",
   "main": "src/angular-text-image.js",
   "authors": [
