@@ -36,7 +36,7 @@
 				scope.output = output;
 				scope.init = init;
 				
-				options.output = scope.output;
+				//options.output = scope.output;
 				scope.options = angular.extend(options, scope.options);
 				
 				scope.$watch('options', function (data) {
