@@ -1,7 +1,8 @@
 var serve = require('serve');
+var keypress = require('keypress');
 var port = process.env.PORT || 5000;
 
-var server = serve(__dirname + '/demo/', {
+var server = serve(__dirname, {
 	port: port,
 	ignore: ['node_modules']
 });

@@ -8,7 +8,12 @@
 		<style>
 			@import url('https://fonts.googleapis.com/css?family=Mr+De+Haviland');
 			.test {
-				font-family: 'Mr De Haviland', cursive;
+				font-family: 'Mr De Haviland', cursive !important;
+			}
+			.preview {
+				display: block;
+				float: left;
+				clear: both;
 			}
 		</style>
 	</head>
@@ -16,13 +21,17 @@
 
 		<h1>Demo</h1>
 		<div class="test">
-			<text-to-image options="vm.options" output="vm.getData"></text-to-image>
+			<text-to-image ng-model="result" options="vm.options" output="vm.getData"></text-to-image>
+
+			<div class="preview">
+				<img ng-src="{{ result }}" alt="" />
+			</div>
 			<button ng-click="vm.output()">Get Output</button>
 		</div>
 
 		<script src="../node_modules/jquery/dist/jquery.js"></script>
 		<script src="../node_modules/angular/angular.js"></script>
-		<script src="angular-text-image.js"></script>
+		<script src="../dist/angular-text-image.js"></script>
 		<script>
 			(function () {
 				'use strict';
@@ -31,15 +40,14 @@
 					.module('myApp', ['jmp.textToImage'])
 					.controller('testController', function ($scope) {
 						var vm = this;
-//						vm.getData = 'test data';
 						vm.options = {
 							text: 'The Quick Brown Fox',
 							fontSize: 37,
-							width: 200,
+							width: 300,
 							height: 100,
-							textLeft: 0,
+							textLeft: 20,
 							textTop: 0,
-							fontFamily: 'Mr De Haviland, cursive'
+							fontFamily: '"Mr De Haviland", cursive'
 						};
 
 						vm.output = function () {

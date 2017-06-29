@@ -9,7 +9,7 @@
   "scripts": {
     "init": "npm install",
     "install": "bower install",
-    "demo": "node demo"
+    "demo": "node index.js"
   },
   "keywords": [
     "text-to-image",
@@ -28,6 +28,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "jquery": "^3.2.1",
+    "keypress": "^0.2.1",
     "pump": "^1.0.2",
     "serve": "^5.2.3"
   },
