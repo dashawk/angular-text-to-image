@@ -84,6 +84,7 @@
 					context.fillStyle = scope.options.textColor;
 					context.lineWidth = 2;
 					
+					context.clearRect(0, 0, canvas[0].width, canvas[0].height);
 					context.translate(100, 50);
 					context.fillText(scope.options.text, scope.options.textLeft, scope.options.textTop);
 					
